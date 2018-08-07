@@ -6,8 +6,10 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class CalculateRecordTest {
     private CalculateRecord calculateRecord;
@@ -31,6 +33,13 @@ public class CalculateRecordTest {
         assertEquals(25.4347, eventData.getA(), 0.1);
         assertEquals(18., eventData.getB(), 0.1);
         assertEquals(1.81, eventData.getC(), 0.1);
+
+        try {
+            final EventData eventData2 = calculateRecord.getEventDataByScoreName("d100m2");
+            fail();
+        } catch (NoSuchElementException e) {
+
+        }
     }
 
     @Test
@@ -47,11 +56,51 @@ public class CalculateRecordTest {
         scores.put("javelinThrow", 1.);
         scores.put("d1500m", 1.);
         assertEquals(16356, Math.round(calculateRecord.generateTotalScore(scores)));
+
+        try {
+            final Map<String, Double> scores0 = new HashMap<>();
+            scores0.put("d100m", 0.);
+            scores0.put("longJump", 0.);
+            scores0.put("shotPut", 0.);
+            scores0.put("highJump", 0.);
+            scores0.put("d400m", 0.);
+            scores0.put("d110m", 0.);
+            scores0.put("discusThrow", 0.);
+            scores0.put("poleVault", 0.);
+            scores0.put("javelinThrow", 0.);
+            scores0.put("d1500m", 0.);
+            calculateRecord.generateTotalScore(scores0);
+            fail();
+        } catch (RuntimeException ignored) {
+
+        }
+
+        try {
+            final Map<String, Double> scoresMinus1 = new HashMap<>();
+            scoresMinus1.put("d100m", -1.);
+            scoresMinus1.put("longJump", -1.);
+            scoresMinus1.put("shotPut", -1.);
+            scoresMinus1.put("highJump", -1.);
+            scoresMinus1.put("d400m", -1.);
+            scoresMinus1.put("d110m", -1.);
+            scoresMinus1.put("discusThrow", -1.);
+            scoresMinus1.put("poleVault", -1.);
+            scoresMinus1.put("javelinThrow", -1.);
+            scoresMinus1.put("d1500m", -1.);
+            calculateRecord.generateTotalScore(scoresMinus1);
+            fail();
+        } catch (RuntimeException ignored) {
+        }
     }
 
     @Test
     public void calculateScore() {
         Double result = calculateRecord.calculateScore("d100m", 1000.);
         assertEquals(6624428.43, result, 0.01);
+
+        try {
+            calculateRecord.calculateScore("d100m", -1.);
+            fail();
+        } catch(RuntimeException ignored){}
     }
 }

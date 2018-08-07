@@ -2,7 +2,7 @@
 
 1. You should execute maven:
 ``mvn clean install``
-2. You should pass to the target directory and start project with two parameters.
+2. You should go to the target directory and start project with two parameters.
     1. The CSV file which contains sportsmen data.
     2. The output xml file.
     <br/> For example: ``java -jar csv-1.0-SNAPSHOT.jar "C:/results.csv" "C:/Users/Игорь/IdeaProjects/csv/file.xml"``

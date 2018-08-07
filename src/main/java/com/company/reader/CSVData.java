@@ -18,11 +18,9 @@ public class CSVData extends EventData {
     public CSVData(final Integer index, final String name, final String shortName, final Double a, final Double b, final Double c) {
         super(name,shortName,a,b,c);
         this.index = index;
-
     }
 
     public Integer getIndex() {
-
         return index;
     }
 }

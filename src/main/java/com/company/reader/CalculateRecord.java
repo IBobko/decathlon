@@ -35,7 +35,10 @@ public abstract class CalculateRecord implements RecordReader {
      * @param score     Score.
      * @return Score.
      */
-    protected Double calculateScore(final String shortName, final Double score) {
+    protected Double calculateScore(final String shortName, final Double score){
+        if (shortName == null || score == null || score <= 0) {
+            throw new RuntimeException("Incorrect score.");
+        }
         final EventData event = getEventDataByScoreName(shortName);
         return event.getA() * Math.pow(Math.abs(score - event.getB()), event.getC());
     }
