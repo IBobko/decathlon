@@ -10,4 +10,9 @@ public interface RecordReader {
      * @return list of records.
      */
     List<Record> getRecords();
+
+    /**
+     * If It is necessary this method sorts records by the total score.
+     */
+    void sortByTotalScore();
 }

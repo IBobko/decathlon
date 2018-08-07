@@ -1,14 +1,13 @@
 package com.company.writer;
 
-        import com.company.AppTest;
-        import com.company.reader.CSVReader;
-        import org.junit.After;
-        import org.junit.Before;
-        import org.junit.Test;
+import com.company.AppTest;
+import com.company.reader.CSVReader;
+import org.junit.Before;
+import org.junit.Test;
 
-        import java.io.File;
+import java.io.File;
 
-        import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class WriteXMLFileTest {
 
@@ -16,7 +15,7 @@ public class WriteXMLFileTest {
 
     @Before
     public void setUp() throws Exception {
-        calculateRecord = new CSVReader(AppTest.EVENT_DATA,AppTest.args[0]);
+        calculateRecord = new CSVReader(AppTest.EVENT_DATA, AppTest.args[0]);
     }
 
     @Test

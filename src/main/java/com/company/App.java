@@ -16,7 +16,7 @@ public class App {
     private static final List<CSVData> EVENT_DATA = new ArrayList<>();
 
     /**
-     * Initializing data for calculation and naming of the decathlon.
+     * Initializing database for calculation and naming of the decathlon.
      */
     static {
         EVENT_DATA.add(new CSVData(1, "100 m", "d100m", 25.4347, 18., 1.81));
@@ -38,6 +38,7 @@ public class App {
                 System.exit(0);
             }
             final RecordReader recordReader = new CSVReader(EVENT_DATA, args[0]);
+            recordReader.sortByTotalScore();
             final List<Record> records = recordReader.getRecords();
             final WriteXMLFile writeXMLFile = new WriteXMLFile(args[1]);
             writeXMLFile.write(records);

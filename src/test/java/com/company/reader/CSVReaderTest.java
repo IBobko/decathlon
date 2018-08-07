@@ -17,7 +17,17 @@ public class CSVReaderTest {
 
     @Test
     public void getEventDataByScoreName() {
-        EventData r = calculateRecord.getEventDataByScoreName("d100m");
+        final EventData r = calculateRecord.getEventDataByScoreName("d100m");
         assertEquals("100 m",r.getName());
+    }
+
+    @Test
+    public void getScoreNameByIndex() {
+        assertEquals("d100m",calculateRecord.getScoreNameByIndex(1));
+    }
+
+    @Test
+    public void getSeconds() {
+        assertEquals(610.1,calculateRecord.getSeconds("10.10.100"),0.1);
     }
 }

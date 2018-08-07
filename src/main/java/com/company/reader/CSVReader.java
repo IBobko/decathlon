@@ -1,19 +1,18 @@
 package com.company.reader;
 
-import com.company.*;
+import com.company.Record;
 
 import java.io.File;
-import java.util.*;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class CSVReader extends CalculateRecord {
     private final static String CSV_SPLITTER = ";";
+    private final static String DISCIPLINE_WITH_TIME = "d1500m";
+    private final static int COLUMN_AMOUNT = 11;
     private final List<CSVData> cSVData;
-    private final List<Record> records = new ArrayList<>();
-
-    @Override
-    public List<Record> getRecords() {
-        return records;
-    }
 
     public CSVReader(final List<CSVData> cSVData, final String csvFile) throws Exception {
         this.cSVData = cSVData;
@@ -23,6 +22,9 @@ public class CSVReader extends CalculateRecord {
             lineNumber++;
             final String line = scanner.nextLine();
             final String[] recordStr = line.split(CSV_SPLITTER);
+            if (recordStr.length != COLUMN_AMOUNT) {
+                continue;
+            }
             final Record record = new Record(recordStr[0]);
             final Map<String, Double> scores = record.getScores();
             for (int i = 1; i < recordStr.length - 1; i++) {
@@ -35,12 +37,11 @@ public class CSVReader extends CalculateRecord {
                     }
                 }
             }
-            scores.put("d1500m", getSeconds(recordStr[recordStr.length - 1]));
-            records.add(record);
+            scores.put(DISCIPLINE_WITH_TIME, getSeconds(recordStr[recordStr.length - 1]));
+            getRecords().add(record);
             record.setTotalScore(generateTotalScore(record.getScores()));
         }
         scanner.close();
-        sortByTotalScore(records);
     }
 
     /**
@@ -49,24 +50,22 @@ public class CSVReader extends CalculateRecord {
      * @param s Date in format m.s.ms to
      * @return seconds.
      */
-    private Double getSeconds(final String s) {
+    public Double getSeconds(final String s) {
         final String[] time = s.split("\\.");
-        final double min = Double.parseDouble(time[0].trim());
-        final double sec = Double.parseDouble(time[1].trim());
-        final double milliseconds = Double.parseDouble(time[2].trim());
-        return min * 60 + sec + 1000. / milliseconds;
+        final long min = Long.parseLong(time[0].trim());
+        final long sec = Long.parseLong(time[1].trim());
+        final long milliseconds = Long.parseLong(time[2].trim());
+        return Duration.ofMinutes(min).plusSeconds(sec).plusMillis(milliseconds).toMillis() / 1000.;
     }
 
     /**
      * Returns data about event by short name.
+     *
      * @param name Short name.
      * @return Data about events.
      */
     protected EventData getEventDataByScoreName(final String name) {
-        for (final CSVData CSVData : cSVData) {
-            if (CSVData.getShortName().equals(name)) return CSVData;
-        }
-        return null;
+        return cSVData.stream().filter(csvData -> csvData.getShortName().equals(name)).findFirst().get();
     }
 
     /**
@@ -75,10 +74,7 @@ public class CSVReader extends CalculateRecord {
      * @param i The column index in CSV file.
      * @return The short name of discipline.
      */
-    private String getScoreNameByIndex(int i) {
-        for (final CSVData CSVData : this.cSVData) {
-            if (CSVData.getIndex().equals(i)) return CSVData.getShortName();
-        }
-        return null;
+    protected String getScoreNameByIndex(int i) {
+        return cSVData.stream().filter(c -> c.getIndex().equals(i)).findFirst().get().getShortName();
     }
 }

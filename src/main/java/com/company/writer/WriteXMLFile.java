@@ -15,6 +15,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class WriteXMLFile {
     private String filename;
@@ -23,17 +24,19 @@ public class WriteXMLFile {
         this.filename = filename;
     }
 
-    public void write(List<Record> records) {
+    public void write(final List<Record> records) {
+        if (records == null) {
+            System.out.println("Records is null.");
+            return;
+        }
         try {
-
             final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             // root elements
             final Document doc = docBuilder.newDocument();
             final Element rootElement = doc.createElement("results");
             doc.appendChild(rootElement);
 
-            for (final Record record : records) {
-
+            records.forEach(record -> {
                 final Element athlete = doc.createElement("athlete");
                 rootElement.appendChild(athlete);
 
@@ -49,13 +52,12 @@ public class WriteXMLFile {
                 final Element scores = doc.createElement("scores");
                 athlete.appendChild(scores);
 
-
-                for (Map.Entry<String,Double> scoreData : record.getScores().entrySet()) {
-                    Element score = doc.createElement(scoreData.getKey());
-                    score.appendChild(doc.createTextNode(scoreData.getValue().toString()));
+                record.getScores().forEach((key, value) -> {
+                    final Element score = doc.createElement(key);
+                    score.appendChild(doc.createTextNode(value.toString()));
                     scores.appendChild(score);
-                }
-            }
+                });
+            });
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
