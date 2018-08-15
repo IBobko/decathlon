@@ -1,1 +1,67 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><results><athlete><name>John Smith</name><totalScore>3949.4374190311573</totalScore><scores><shotPut>9.22</shotPut><d400m>60.39</d400m><d100m>12.61</d100m><highJump>1.5</highJump><javelinThrow>35.81</javelinThrow><d110m>16.43</d110m><d1500m>325.072</d1500m><longJump>5.0</longJump><discusThrow>21.6</discusThrow><poleVault>2.6</poleVault></scores></athlete><athlete><name>Jane Doe</name><totalScore>3042.026491294123</totalScore><scores><shotPut>7.79</shotPut><d400m>64.72</d400m><d100m>13.04</d100m><highJump>1.55</highJump><javelinThrow>28.2</javelinThrow><d110m>18.74</d110m><d1500m>410.076</d1500m><longJump>4.53</longJump><discusThrow>24.2</discusThrow><poleVault>2.4</poleVault></scores></athlete><athlete><name>Jaan Lepp</name><totalScore>3227.856225334946</totalScore><scores><shotPut>10.12</shotPut><d400m>68.44</d400m><d100m>13.75</d100m><highJump>1.5</highJump><javelinThrow>33.88</javelinThrow><d110m>19.18</d110m><d1500m>382.075</d1500m><longJump>4.84</longJump><discusThrow>30.85</discusThrow><poleVault>2.8</poleVault></scores></athlete><athlete><name>Foo Bar</name><totalScore>3051.6107038542405</totalScore><scores><shotPut>8.64</shotPut><d400m>66.06</d400m><d100m>13.43</d100m><highJump>1.5</highJump><javelinThrow>33.48</javelinThrow><d110m>19.05</d110m><d1500m>411.001</d1500m><longJump>4.35</longJump><discusThrow>24.89</discusThrow><poleVault>2.2</poleVault></scores></athlete></results>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+    <athlete>
+        <name>Jane Doe</name>
+        <totalScore>3040.270748588782</totalScore>
+        <scores>
+            <shotPut>354.3739548681912</shotPut>
+            <d400m>267.2021213504355</d400m>
+            <d100m>461.58156359057085</d100m>
+            <highJump>377.8638268592984</highJump>
+            <javelinThrow>274.46102745219736</javelinThrow>
+            <d110m>455.95479535662446</d110m>
+            <d1500m>95.66904828969236</d1500m>
+            <longJump>265.2860896453676</longJump>
+            <discusThrow>352.2189748086462</discusThrow>
+            <poleVault>135.6593463677584</poleVault>
+        </scores>
+    </athlete>
+    <athlete>
+        <name>Foo Bar</name>
+        <totalScore>3051.5877678672896</totalScore>
+        <scores>
+            <shotPut>404.819794475293</shotPut>
+            <d400m>230.8817415034988</d400m>
+            <d100m>397.9925491236093</d100m>
+            <highJump>378.22913885970974</highJump>
+            <javelinThrow>348.9710291472247</javelinThrow>
+            <d110m>428.55563510120277</d110m>
+            <d1500m>95.03099189364329</d1500m>
+            <longJump>265.59640320246297</longJump>
+            <discusThrow>365.4757165459416</discusThrow>
+            <poleVault>136.03476801470327</poleVault>
+        </scores>
+    </athlete>
+    <athlete>
+        <name>Jaan Lepp</name>
+        <totalScore>3225.5464414421176</totalScore>
+        <scores>
+            <shotPut>493.35694573130644</shotPut>
+            <d400m>172.2962295865063</d400m>
+            <d100m>348.9880715047879</d100m>
+            <highJump>378.22913885970974</highJump>
+            <javelinThrow>354.6676362688134</javelinThrow>
+            <d110m>417.30797981050773</d110m>
+            <d1500m>179.35218528008372</d1500m>
+            <longJump>264.75190379903137</longJump>
+            <discusThrow>481.6870396855318</discusThrow>
+            <poleVault>134.9093109158391</poleVault>
+        </scores>
+    </athlete>
+    <athlete>
+        <name>John Smith</name>
+        <totalScore>3946.158767918916</totalScore>
+        <scores>
+            <shotPut>439.41692746061835</shotPut>
+            <d400m>400.50769417430354</d400m>
+            <d100m>536.54022187736</d100m>
+            <highJump>378.22913885970974</highJump>
+            <javelinThrow>382.24751782105653</javelinThrow>
+            <d110m>685.5767742681049</d110m>
+            <d1500m>421.19548776975086</d1500m>
+            <longJump>264.4763153764747</longJump>
+            <discusThrow>302.68449642977436</discusThrow>
+            <poleVault>135.28419388176331</poleVault>
+        </scores>
+    </athlete>
+</results>

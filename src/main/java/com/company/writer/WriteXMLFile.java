@@ -52,7 +52,7 @@ public class WriteXMLFile {
                 final Element scores = doc.createElement("scores");
                 athlete.appendChild(scores);
 
-                record.getScores().forEach((key, value) -> {
+                record.getCalculatedScores().forEach((key, value) -> {
                     final Element score = doc.createElement(key);
                     score.appendChild(doc.createTextNode(value.toString()));
                     scores.appendChild(score);

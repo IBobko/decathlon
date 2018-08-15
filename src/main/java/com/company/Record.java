@@ -20,11 +20,17 @@ import java.util.Map;
 public class Record {
     private String name;
     private Map<String, Double> scores;
+    private Map<String, Double> calculatedScores;
     private Double totalScore;
 
     public Record(String name) {
         this.name = name;
         scores = new HashMap<>();
+        calculatedScores = new HashMap<>();
+    }
+
+    public Map<String, Double> getCalculatedScores() {
+        return calculatedScores;
     }
 
     public Double getTotalScore() {

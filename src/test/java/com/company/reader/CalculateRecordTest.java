@@ -55,7 +55,7 @@ public class CalculateRecordTest {
         scores.put("poleVault", 2.60);
         scores.put("javelinThrow", 35.81);
         scores.put("d1500m", 325.72);
-        assertEquals(3946.1582,calculateRecord.generateTotalScore(scores),0.001);
+        assertEquals(3946.1587,calculateRecord.generateTotalScore(scores),0.0001);
 
         try {
             final Map<String, Double> scores0 = new HashMap<>();

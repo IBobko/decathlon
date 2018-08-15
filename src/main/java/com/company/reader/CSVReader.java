@@ -26,17 +26,21 @@ public class CSVReader extends CalculateRecord {
                 }
                 final Record record = new Record(recordStr[0]);
                 final Map<String, Double> scores = record.getScores();
+                final Map<String, Double> calculatedScores = record.getCalculatedScores();
                 for (int i = 1; i < recordStr.length - 1; i++) {
                     final String shortName = getScoreNameByIndex(i);
                     if (shortName != null) {
                         try {
+                            double value = Double.parseDouble(recordStr[i]);
                             scores.put(shortName, Double.parseDouble(recordStr[i]));
+                            calculatedScores.put(shortName, calculateScore(shortName, value));
                         } catch (NumberFormatException e) {
                             throw new Exception("Error in file. Not valid format in line" + lineNumber + " and column " + (i + 1));
                         }
                     }
                 }
                 scores.put(DISCIPLINE_WITH_TIME, getSeconds(recordStr[recordStr.length - 1]));
+                calculatedScores.put(DISCIPLINE_WITH_TIME, calculateScore(DISCIPLINE_WITH_TIME,getSeconds(recordStr[recordStr.length - 1])));
                 getRecords().add(record);
                 record.setTotalScore(generateTotalScore(record.getScores()));
             }
