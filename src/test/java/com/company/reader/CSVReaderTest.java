@@ -34,7 +34,7 @@ public class CSVReaderTest {
 
     @Test
     public void getSeconds() {
-        assertEquals(610.1,calculateRecord.getSeconds("10.10.100"),0.1);
+        assertEquals(325.72,calculateRecord.getSeconds("5.25.72"),0.01);
         assertNull(calculateRecord.getSeconds("10"));
     }
 }

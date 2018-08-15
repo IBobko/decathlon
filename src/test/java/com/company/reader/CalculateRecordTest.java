@@ -45,17 +45,17 @@ public class CalculateRecordTest {
     @Test
     public void generateTotalScore() {
         final Map<String, Double> scores = new HashMap<>();
-        scores.put("d100m", 1.);
-        scores.put("longJump", 1.);
-        scores.put("shotPut", 1.);
-        scores.put("highJump", 1.);
-        scores.put("d400m", 1.);
-        scores.put("d110m", 1.);
-        scores.put("discusThrow", 1.);
-        scores.put("poleVault", 1.);
-        scores.put("javelinThrow", 1.);
-        scores.put("d1500m", 1.);
-        assertEquals(16356, Math.round(calculateRecord.generateTotalScore(scores)));
+        scores.put("d100m", 12.61);
+        scores.put("longJump", 5.0);
+        scores.put("shotPut", 9.22);
+        scores.put("highJump", 1.50);
+        scores.put("d400m", 60.39);
+        scores.put("d110m", 16.43);
+        scores.put("discusThrow", 21.60);
+        scores.put("poleVault", 2.60);
+        scores.put("javelinThrow", 35.81);
+        scores.put("d1500m", 325.72);
+        assertEquals(3946.1582,calculateRecord.generateTotalScore(scores),0.001);
 
         try {
             final Map<String, Double> scores0 = new HashMap<>();
@@ -95,9 +95,7 @@ public class CalculateRecordTest {
 
     @Test
     public void calculateScore() {
-        Double result = calculateRecord.calculateScore("d100m", 1000.);
-        assertEquals(6624428.43, result, 0.01);
-
+        assertEquals(536.5402,calculateRecord.calculateScore("d100m",12.61),0.001);
         try {
             calculateRecord.calculateScore("d100m", -1.);
             fail();

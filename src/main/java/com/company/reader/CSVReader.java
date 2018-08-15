@@ -58,7 +58,7 @@ public class CSVReader extends CalculateRecord {
         try {
             final long min = Long.parseLong(time[0].trim());
             final long sec = Long.parseLong(time[1].trim());
-            final long milliseconds = Long.parseLong(time[2].trim());
+            final long milliseconds = Long.parseLong(time[2].trim()) * 10;
             return Duration.ofMinutes(min).plusSeconds(sec).plusMillis(milliseconds).toMillis() / 1000.;
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             System.out.println("Time string '" + s + "' is incorrect");
