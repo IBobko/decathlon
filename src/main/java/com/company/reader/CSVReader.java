@@ -32,7 +32,7 @@ public class CSVReader extends CalculateRecord {
                     if (shortName != null) {
                         try {
                             double value = Double.parseDouble(recordStr[i]);
-                            scores.put(shortName, Double.parseDouble(recordStr[i]));
+                            scores.put(shortName, value);
                             calculatedScores.put(shortName, calculateScore(shortName, value));
                         } catch (NumberFormatException e) {
                             throw new Exception("Error in file. Not valid format in line" + lineNumber + " and column " + (i + 1));
